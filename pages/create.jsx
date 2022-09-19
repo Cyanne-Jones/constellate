@@ -5,6 +5,9 @@ export default function Create() {
 
   return (
     <>
+      <Head>
+        <title>Create a New Entry</title>
+      </Head>
       <Nav />
       Create
     </>
