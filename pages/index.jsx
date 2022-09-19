@@ -10,6 +10,7 @@ export default function Home() {
       <title>The Write Stuff</title>
     </Head>
       <Nav />
+      HOME
     </>
   )
 };

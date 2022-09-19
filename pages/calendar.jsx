@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import Nav from '../components/Nav';
 
-export default function Login() {
+export default function CalendarView() {
 
   return (
     <>
-    <Nav />
-      LOGIN
+      <Nav />
+      Calendar
     </>
   )
-
+  
 };
