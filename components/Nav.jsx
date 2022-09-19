@@ -16,7 +16,7 @@ export default function Nav() {
   return (
     <div>
       {navLinks.map(link => (
-        <Link href={link.path} passHref>
+        <Link key={link.title} href={link.path} passHref>
           <a>
             {link.title}
           </a>

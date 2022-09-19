@@ -5,6 +5,9 @@ export default function CalendarView() {
 
   return (
     <>
+    <Head>
+      <title>Calendar</title>
+    </Head>
       <Nav />
       Calendar
     </>
