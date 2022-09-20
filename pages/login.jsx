@@ -3,16 +3,18 @@ import Nav from '../components/Nav';
 import { auth, provider } from '../firebase-config';
 import { signInWithPopup } from 'firebase/auth';
 import useIsAuthStore from '../state/useIsAuthStore';
+import { useRouter } from 'next/router';
 
 export default function Login() {
   const setIsAuthTrue = useIsAuthStore((state) => state.setIsAuthTrue);
+  const router = useRouter();
 
-  const signInWithGoogle = () => {
+  const signInWithGoogle = (event) => {
 
     signInWithPopup(auth, provider).then((result) => {
       localStorage.setItem("isAuth", true);
       setIsAuthTrue();
-      window.location.pathname = '/create';
+      router.push('/create');
     });
   };
   return (
