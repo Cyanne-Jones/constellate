@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import styles from '../styles/Nav.module.css';
 
 const navLinks = [
 
@@ -11,18 +12,21 @@ const navLinks = [
 
 export default function Nav() {
 
-  const router= useRouter();
+  const router = useRouter();
 
   return (
-    <div>
-      {navLinks.map(link => (
-        <Link key={link.title} href={link.path} passHref>
-          <a>
-            {link.title}
-          </a>
-        </Link>
-      ))}
-    </div>
+    <nav className={styles.navBar}>
+      <h1>the write stuff</h1>
+      <div className={styles.navLinkContainer}>
+        {navLinks.map(link => (
+          <Link key={link.title} href={link.path} passHref>
+            <a className={router.pathname === link.path ? styles.activeLink : styles.inactiveLink}>
+              {link.title}
+            </a>
+          </Link>
+        ))}
+      </div>
+    </nav>
   )
 
 };
