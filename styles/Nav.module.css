@@ -2,5 +2,36 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  height: 3.5rem;
+}
+
+.activeLink {
+  background-color: #299284;
+  border-radius: 1rem;
+}
+
+.link {
   margin: 1rem;
+  padding: 1rem;
+}
+
+.logoutButton {
+  background: transparent;
+  border: none;
+  padding: 1rem;
+  margin-left: 1rem;
+  margin-right: 0rem;
+  color: #E5BB66;
+  font-family: 'Antonio', sans-serif;
+  font-size: 1rem;
+}
+
+.logoutButton:hover {
+  cursor: pointer;
+}
+
+.title {
+  font-size: 2rem;
 }
