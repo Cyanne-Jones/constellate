@@ -20,60 +20,62 @@ export default function Create() {
   });
 
   return (
-    <>
+    <div className={styles.create}>
       <Head>
         <title>Create a New Entry</title>
       </Head>
       <Nav />
       {!isAuth && <h1 className={styles.errorMessage}>Please sign in to create a new journal entry</h1>}
-      <main className={styles.main}>
-        <header className={styles.header}>
-          <h2>new entry</h2>
-          <div className={styles.buttonBox}>
-            <button className={styles.saveButton}>
-              <Image className={styles.images}
-                src='/floppy-disk.png' 
-                alt="save button" 
-                height="20" 
-                width="20"
-              />
-            </button>
-            <button className={styles.deleteButton}>
-              <Image className={styles.images}
-                src='/delete.png' 
-                alt="delete button" 
-                height="20" 
-                width="20"
-              />
-            </button>
-          </div>
-        </header>
-        <div classname={styles.userInputsContainer}>
-          <input type="textarea"
-            className={styles.textArea}
-            placeholder="your thoughts"
-          />
-          <div className={styles.additionalInputsContainer}>
-            <input 
-              type="text"
-              className={styles.additionalInput}
-              placeholder="title (optional)"
-              name="title"
+      <div className={styles.mainContainer}>
+        <main className={styles.main}>
+          <header className={styles.header}>
+            <h2 className={styles.headerText}>new entry</h2>
+            <div className={styles.buttonBox}>
+              <button className={styles.saveButton}>
+                <Image className={styles.images}
+                  src='/floppy-disk.png' 
+                  alt="save button" 
+                  height="40" 
+                  width="40"
+                />
+              </button>
+              <button className={styles.deleteButton}>
+                <Image className={styles.images}
+                  src='/delete.png' 
+                  alt="delete button" 
+                  height="40" 
+                  width="40"
+                />
+              </button>
+            </div>
+          </header>
+          <div className={styles.userInputsContainer}>
+            <textarea type="textarea"
+              className={styles.textArea}
+              placeholder="your thoughts"
             />
-            <input 
-              type="text"
-              className={styles.additionalInput}
-              placeholder="your mood (optional)"
-              name="mood"
-            />
+            <div className={styles.additionalInputsContainer}>
+              <input 
+                type="text"
+                className={styles.additionalInput}
+                placeholder="title (optional)"
+                name="title"
+              />
+              <input 
+                type="text"
+                className={styles.additionalInput}
+                placeholder="your mood (optional)"
+                name="mood"
+              />
+            </div>
+            <div className={styles.reactColorContainer}>
+              <h4>What color does today feel like?</h4>
+              <p>ReactColor goes here</p>
+            </div>
           </div>
-          <div className={styles.reactColorContainer}>
-            <h4>What color does today feel like?</h4>
-            <p>ReactColor goes here</p>
-          </div>
-        </div>
-      </main>
-    </>
+        </main>
+      </div>
+    </div>
   )
   
 };
