@@ -40,7 +40,7 @@ export default function Create() {
         id: auth.currentUser.uid
       }
     });
-    
+
   }
 
   const handleChangeComplete = (userColor) => {
@@ -64,7 +64,12 @@ export default function Create() {
         <title>Create a New Entry</title>
       </Head>
       <Nav />
-      {!isAuth && <h1 className={styles.errorMessage}>Please sign in to create a new journal entry</h1>}
+      {!isAuth ? 
+      <div className={styles.errorContainer}>
+        <h1 className={styles.errorMessage}>
+          Please sign in to create a new journal entry
+        </h1> 
+      </div>:
       <div className={styles.mainContainer}>
         <main className={styles.main}>
           <header className={styles.header}>
@@ -125,8 +130,8 @@ export default function Create() {
             </div>
           </div>
         </main>
-      </div>
+      </div>}
     </div>
-  )
+)
   
 };
