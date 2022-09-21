@@ -5,7 +5,6 @@ import useIsAuthStore from '../state/useIsAuthStore';
 import { useRouter } from 'next/router';
 import styles from '../styles/Create.module.css';
 import Image from 'next/image';
-//import saveIcon from '../assets/floppy-disk.png';
 
 export default function Create() {
 
@@ -49,6 +48,30 @@ export default function Create() {
             </button>
           </div>
         </header>
+        <div classname={styles.userInputsContainer}>
+          <input type="textarea"
+            className={styles.textArea}
+            placeholder="your thoughts"
+          />
+          <div className={styles.additionalInputsContainer}>
+            <input 
+              type="text"
+              className={styles.additionalInput}
+              placeholder="title (optional)"
+              name="title"
+            />
+            <input 
+              type="text"
+              className={styles.additionalInput}
+              placeholder="your mood (optional)"
+              name="mood"
+            />
+          </div>
+          <div className={styles.reactColorContainer}>
+            <h4>What color does today feel like?</h4>
+            <p>ReactColor goes here</p>
+          </div>
+        </div>
       </main>
     </>
   )
