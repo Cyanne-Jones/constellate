@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 import styles from '../styles/Create.module.css';
 import Image from 'next/image';
 import { ChromePicker } from 'react-color';
+import { db, auth } from '../firebase-config';
+import { addDoc, collection } from 'firebase/firestore';
 
 export default function Create() {
 
@@ -15,6 +17,7 @@ export default function Create() {
   const [journalEntry, setJournalEntry] = useState('');
   const [title, setTitle] = useState('');
   const [mood, setMood] = useState('');
+  const entriesCollectionRef = collection(db, 'entries');
 
   useEffect(() => {
 
@@ -23,6 +26,22 @@ export default function Create() {
     }
 
   });
+
+  const createEntry = async () => {
+
+    await addDoc(entriesCollectionRef, { 
+      title: title, 
+      journalEntry: journalEntry,
+      mood: mood,
+      color: color,
+      dateCreated: Date.now(),
+      author: {
+        name: auth.currentUser.displayName, 
+        id: auth.currentUser.uid
+      }
+    });
+
+  }
 
   const handleChangeComplete = (userColor) => {
 
@@ -45,13 +64,19 @@ export default function Create() {
         <title>Create a New Entry</title>
       </Head>
       <Nav />
-      {!isAuth && <h1 className={styles.errorMessage}>Please sign in to create a new journal entry</h1>}
+      {!isAuth ? 
+      <div className={styles.errorContainer}>
+        <h1 className={styles.errorMessage}>
+          Please sign in to create a new journal entry
+        </h1> 
+      </div>:
       <div className={styles.mainContainer}>
         <main className={styles.main}>
           <header className={styles.header}>
             <h2 className={styles.headerText}>new entry</h2>
             <div className={styles.buttonBox}>
-              <button className={styles.saveButton}>
+              <button className={styles.saveButton}
+                onClick={createEntry}>
                 <Image className={styles.images}
                   src='/floppy-disk.png' 
                   alt="save button" 
@@ -105,8 +130,8 @@ export default function Create() {
             </div>
           </div>
         </main>
-      </div>
+      </div>}
     </div>
-  )
+)
   
 };
