@@ -1,15 +1,20 @@
 import Head from 'next/head';
 import Nav from '../components/Nav';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useIsAuthStore from '../state/useIsAuthStore';
 import { useRouter } from 'next/router';
 import styles from '../styles/Create.module.css';
 import Image from 'next/image';
+import { ChromePicker } from 'react-color';
 
 export default function Create() {
 
   const isAuth = useIsAuthStore(state => state.isAuth);
   const router = useRouter();
+  const [color, setColor] = useState('');
+  const [journalEntry, setJournalEntry] = useState('');
+  const [title, setTitle] = useState('');
+  const [mood, setMood] = useState('');
 
   useEffect(() => {
 
@@ -18,6 +23,21 @@ export default function Create() {
     }
 
   });
+
+  const handleChangeComplete = (userColor) => {
+
+    setColor(userColor.hex);
+
+  };
+
+  const deleteInputs = () => {
+
+    setColor('');
+    setJournalEntry('');
+    setTitle('');
+    setMood('');
+
+  }
 
   return (
     <div className={styles.create}>
@@ -39,7 +59,8 @@ export default function Create() {
                   width="40"
                 />
               </button>
-              <button className={styles.deleteButton}>
+              <button className={styles.deleteButton}
+              onClick={deleteInputs}>
                 <Image className={styles.images}
                   src='/delete.png' 
                   alt="delete button" 
@@ -53,6 +74,8 @@ export default function Create() {
             <textarea type="textarea"
               className={styles.textArea}
               placeholder="your thoughts"
+              value={journalEntry}
+              onChange={(event) => setJournalEntry(event.target.value)}
             />
             <div className={styles.additionalInputsContainer}>
               <input 
@@ -60,17 +83,25 @@ export default function Create() {
                 className={styles.additionalInput}
                 placeholder="title (optional)"
                 name="title"
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
               />
               <input 
                 type="text"
                 className={styles.additionalInput}
                 placeholder="your mood (optional)"
                 name="mood"
+                value={mood}
+                onChange={(event) => setMood(event.target.value)}
               />
             </div>
             <div className={styles.reactColorContainer}>
               <h4>What color does today feel like?</h4>
-              <p>ReactColor goes here</p>
+              <ChromePicker 
+                color={color}
+                onChangeComplete={handleChangeComplete}
+                className={styles.reactColor}
+              />
             </div>
           </div>
         </main>
