@@ -27,6 +27,15 @@ export default function Nav() {
       create
     </a>
   </Link>
+  <Link href="/calendar" passHref>
+    <a 
+      className={router.pathname === '/calendar' ? 
+      (`${styles.link} ${styles.activeLink}`) : 
+      (`${styles.link}`)}
+    >
+      calendar
+    </a>
+  </Link>
   <button 
     className={styles.logoutButton}
     onClick={logUserOut}
