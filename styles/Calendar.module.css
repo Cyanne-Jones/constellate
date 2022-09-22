@@ -1,0 +1,48 @@
+.calendarEntry {
+  width: 100%;
+  font-family: 'Antonio', sans-serif;
+  border-radius: 0.5rem;
+  margin: 0.2rem;
+  padding: 0.3rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+  inline-size: 80%;
+  height: 3rem;
+  overflow: hidden;
+  color: #233E49;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.reactCalendar {
+  background-color:#E5BB66;
+  font-family: 'Antonio', sans-serif;
+  border: none;
+  border-radius: 1rem;
+}
+
+.calendar {
+  height: 100vh;
+  width: 100vw;
+}
+
+.calendarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.colorSphere {
+  height: 20px;
+  width: 80%;
+  border-radius: 5rem;
+  box-shadow: rgba(2, 2, 2, 0.2) 3px 3px 0px 1px;
+  margin-top: 0.5rem;
+}
