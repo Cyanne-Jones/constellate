@@ -29,7 +29,6 @@ export default function CalendarPage() {
       const data = await getDocs(entryCollectionRef);
       setEntryList(data.docs.map(data => ({...data.data(), id: data.id}))
       .filter(entry => entry.author.id === auth.currentUser.uid));
-      console.log(entryList);
 
     };
     getEntries();
@@ -38,31 +37,42 @@ export default function CalendarPage() {
 
 
   function tileContent({ activeStartDate, date, view }) {
-
-    let title;
-
-    const entryDates = entryList.map(entry => entry.dateCreated);
     
     if (view === 'month') {
 
       const newEntry = entryList.find(entry => 
-        (new Date(entry.dateCreated).getDate() === date.getDate()) && 
-        (new Date(entry.dateCreated).getMonth() === date.getMonth()) && 
-        (new Date(entry.dateCreated).getYear() === date.getYear()));
+        ((new Date(entry.dateCreated).getDate() === date.getDate()) && 
+          (new Date(entry.dateCreated).getMonth() === date.getMonth()) && 
+          (new Date(entry.dateCreated).getYear() === date.getYear())));
+
 
       if (newEntry) {
-
+        console.log('it happened', newEntry)
         return (
-          <div className={styles.tile}>
+          <div className={styles.tile}
+            onClick={() => router.push('/create')}
+          >
+            <div className={styles.colorSphere}
+              style={{backgroundColor: newEntry.color || '#233E49'}}>
+            </div>
             <p
               className={styles.calendarEntry} 
-              style={{backgroundColor: newEntry.color}}
-              onClick={() => router.push('/create')}
             >
-              {newEntry.title}
+              {newEntry.title ? newEntry.title : 'entry'}
             </p>
           </div>
         );
+       } else {
+        return (
+          <div className={styles.tile}
+            onClick={() => router.push('/create')}
+          >
+            <p
+              className={styles.calendarEntry} 
+            >
+            </p>
+          </div>
+        )
        };
 
     }
