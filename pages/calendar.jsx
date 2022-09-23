@@ -50,7 +50,7 @@ export default function CalendarPage() {
         console.log('it happened', newEntry)
         return (
           <div className={styles.tile}
-            onClick={() => router.push('/create')}
+            onClick={() => router.push(`/entry/${newEntry.id}`)}
           >
             <div className={styles.colorSphere}
               style={{backgroundColor: newEntry.color || '#233E49'}}>
