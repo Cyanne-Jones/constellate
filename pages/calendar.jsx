@@ -47,7 +47,6 @@ export default function CalendarPage() {
 
 
       if (newEntry) {
-        console.log('it happened', newEntry)
         return (
           <div className={styles.tile}
             onClick={() => router.push(`/entry/${newEntry.id}`)}
