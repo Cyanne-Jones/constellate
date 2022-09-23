@@ -42,14 +42,25 @@ const Entry = () => {
         <div className={styles.entryBox}>
           <div className={styles.header}>
             <div className={styles.headerTextBox}>
-              <p>Title: {entry.title}</p>
-              <p>Mood: {entry.mood}</p>
-              <p>Date Created: {new Date(entry.dateCreated).toDateString()}</p>
+              <p 
+                className={styles.title}>
+                  {entry.title}
+              </p>
+              <p 
+                className={styles.headerText}>
+                  <span className={styles.headerTitle}>Mood: </span>
+                  {entry.mood}
+              </p>
+              <p 
+                className={styles.headerText}>
+                  <span className={styles.headerTitle}>Date Created: </span>
+                  {new Date(entry.dateCreated).toDateString()}
+              </p>
             </div>
             <div className={styles.colorBox} style={{backgroundColor: entry.color}}></div>
           </div>
-          <div className={styles.entryBox}>
-            <p>Entry: {entry.journalEntry}</p>
+          <div className={styles.entryTextBox}>
+            <p className={styles.entryText}>{entry.journalEntry}</p>
           </div>
         </div>
       </div>

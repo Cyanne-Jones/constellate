@@ -1,0 +1,58 @@
+.entryPage {
+  height: 100vh;
+}
+
+.entryContainer {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.entryBox {
+  background-color: #4a9085;
+  height: 80%;
+  width: 70%;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: solid #debc72 4px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.colorBox {
+  height: 3rem;
+  width: 4rem;
+  border-radius: 2rem;
+  box-shadow: rgba(2, 2, 2, 0.2) 3px 3px 0px 1px;
+}
+
+.entryTextBox {
+  background-color: #debc72;
+  color: #293d48;
+  height: 60%;
+  border-radius: 1rem;
+}
+
+.entryText {
+  padding: 1rem;
+}
+
+.headerTitle {
+  font-size: 1.3rem;
+}
+
+.headerText {
+  margin: 0.5rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  margin: 0.5rem;
+}
