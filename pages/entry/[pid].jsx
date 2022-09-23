@@ -32,14 +32,27 @@ const Entry = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.entryPage}>
       <Head>
         <title>Journal Entry</title>
       </Head>
       <Nav />
-      {!isAuth && <p>Please sign in to access this entry</p>}
-      <p>Title: {entry.title}</p>
-      <p>Entry: {entry.journalEntry}</p>
+      <div className={styles.entryContainer}>
+        {!isAuth && <p className={styles.errorMessage}>Please sign in to access this entry</p>}
+        <div className={styles.entryBox}>
+          <div className={styles.header}>
+            <div className={styles.headerTextBox}>
+              <p>Title: {entry.title}</p>
+              <p>Mood: {entry.mood}</p>
+              <p>Date Created: {new Date(entry.dateCreated).toDateString()}</p>
+            </div>
+            <div className={styles.colorBox} style={{backgroundColor: entry.color}}></div>
+          </div>
+          <div className={styles.entryBox}>
+            <p>Entry: {entry.journalEntry}</p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 };
