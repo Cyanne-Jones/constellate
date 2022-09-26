@@ -11,10 +11,12 @@
   height: 3.8rem;
   overflow: scroll;
   color: #233E49;
+  transform: translateY(0.5rem);
 }
 
 .calendarEntry::-webkit-scrollbar {
   width: 0.5rem;
+  height: 0.5rem;
 }
 .calendarEntry::-webkit-scrollbar-track {
   background: transparent;
