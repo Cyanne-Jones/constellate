@@ -14,6 +14,7 @@ const Entry = () => {
   const { pid } = router.query;
   const [ entry, setEntry ] = useState({});
   const entryCollectionRef = collection(db, 'entries');
+  const [ entryAuthorId, setEntryAuthorId] = useState(0);
 
   useEffect(() => {
 
@@ -26,6 +27,7 @@ const Entry = () => {
       const data = await getDocs(entryCollectionRef);
 
       setEntry(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)));
+      setEntryAuthorId(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).author.id);
     };
     getEntry();
 
@@ -38,7 +40,7 @@ const Entry = () => {
       </Head>
       <Nav />
       <div className={styles.entryContainer}>
-        {(!isAuth || auth.currentUser.uid !== entry.author.id) && <p className={styles.errorMessage}>Please sign in to access this entry</p>}
+        {(!isAuth || auth.currentUser.uid !== entryAuthorId) && <p className={styles.errorMessage}>Please sign in to access this entry</p>}
         <div className={styles.entryBox}>
           <div className={styles.header}>
             <div className={styles.headerTextBox}>
