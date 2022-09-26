@@ -57,7 +57,7 @@ export default function CalendarPage() {
             <p
               className={styles.calendarEntry} 
             >
-              {newEntry.title ? newEntry.title : 'untitled entry'}
+              {newEntry.title ? newEntry.title : 'an untitled entry'}
             </p>
           </div>
         );
