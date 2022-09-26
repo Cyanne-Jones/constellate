@@ -29,6 +29,11 @@ export default function Create() {
 
   const createEntry = async () => {
 
+    if (!journalEntry) {
+      alert('Please enter journal text before submitting!');
+      return;
+    };
+
     await addDoc(entriesCollectionRef, { 
       title: title, 
       journalEntry: journalEntry,
