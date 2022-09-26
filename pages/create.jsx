@@ -41,6 +41,8 @@ export default function Create() {
       }
     });
 
+    router.push('/calendar');
+
   }
 
   const handleChangeComplete = (userColor) => {
