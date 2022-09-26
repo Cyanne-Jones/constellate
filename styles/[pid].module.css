@@ -49,6 +49,20 @@
   transform: translateY(0.4rem);
 }
 
+.entryText::-webkit-scrollbar {
+  width: 0.8rem;
+}
+.entryText::-webkit-scrollbar-track {
+  background: transparent;
+}
+.entryText::-webkit-scrollbar-thumb {
+  background-color: #d46b55;
+  border-radius: 20px;
+}
+.entryText::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 .headerTitle {
   font-size: 1.3rem;
 }
