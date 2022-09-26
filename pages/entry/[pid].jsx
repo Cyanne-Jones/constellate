@@ -38,7 +38,7 @@ const Entry = () => {
       </Head>
       <Nav />
       <div className={styles.entryContainer}>
-        {!isAuth && <p className={styles.errorMessage}>Please sign in to access this entry</p>}
+        {(!isAuth || auth.currentUser.uid !== entry.author.id) && <p className={styles.errorMessage}>Please sign in to access this entry</p>}
         <div className={styles.entryBox}>
           <div className={styles.header}>
             <div className={styles.headerTextBox}>
