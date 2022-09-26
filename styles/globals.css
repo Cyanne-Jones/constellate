@@ -113,7 +113,7 @@ a {
 }
 
 .react-calendar__tile--now {
-  background: #d46b55;
+  background: rgba(212, 107, 85, 0.5);
 }
 
 .react-calendar__navigation__label {
@@ -130,6 +130,7 @@ a {
   margin: 1rem;
   border-radius: 1rem;
   box-shadow: rgba(2, 2, 2, 0.2) 3px 3px 0px 1px;
+  text-transform:lowercase;
 }
 
 .react-calendar__viewContainer {
@@ -165,4 +166,18 @@ a {
 }
 *::-webkit-scrollbar-corner {
   background: transparent;
+}
+
+@media screen and (max-width: 700px) {
+  .react-calendar__navigation__label__labelText {
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px;
+    box-shadow: none;
+    font-size: 1rem;
+  }
+
+  .react-calendar__tile {
+    height: 4.2rem;
+  }
 }
