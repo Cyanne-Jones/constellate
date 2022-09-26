@@ -27,7 +27,7 @@ export default function Login() {
       <Nav />
       <div className={styles.loginContainer}>
         <div className={styles.yellowBox}>
-          <p>Sign in with Google to continue</p> 
+          <p>sign in with google to continue</p> 
           <button 
             className={styles.loginWithGoogleButton}
             onClick={signInWithGoogle}
