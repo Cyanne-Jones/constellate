@@ -29,6 +29,11 @@ export default function Create() {
 
   const createEntry = async () => {
 
+    if (!journalEntry) {
+      alert('Please enter journal text before submitting!');
+      return;
+    };
+
     await addDoc(entriesCollectionRef, { 
       title: title, 
       journalEntry: journalEntry,
@@ -40,6 +45,8 @@ export default function Create() {
         id: auth.currentUser.uid
       }
     });
+
+    router.push('/calendar');
 
   }
 

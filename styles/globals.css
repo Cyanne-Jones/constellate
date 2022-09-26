@@ -152,3 +152,17 @@ a {
 .react-calendar__month-view__days__day abbr {
   padding: 0.3rem;
 }
+
+*::-webkit-scrollbar {
+  width: 0.8rem;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #d46b55;
+  border-radius: 20px;
+}
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
