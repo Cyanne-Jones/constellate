@@ -40,26 +40,26 @@ const Entry = () => {
       </Head>
       <Nav />
       <div className={styles.entryContainer}>
-        {(!isAuth || auth.currentUser.uid !== entryAuthorId) && <p className={styles.errorMessage}>Please sign in to access this entry</p>}
+        {(!isAuth || auth.currentUser.uid !== entryAuthorId) && <p className={styles.errorMessage}>please sign in to access this entry</p>}
         <div className={styles.entryBox}>
           <div className={styles.header}>
             <div className={styles.headerTextBox}>
               <p 
                 className={styles.title}>
-                  {entry.title}
+                  {entry.title ? entry.title : 'untitled entry'}
               </p>
               <p 
                 className={styles.headerText}>
-                  <span className={styles.headerTitle}>Mood: </span>
-                  {entry.mood}
+                  <span className={styles.headerTitle}>mood: </span>
+                  {entry.mood? entry.mood : 'mood not entered on entry'}
               </p>
               <p 
                 className={styles.headerText}>
-                  <span className={styles.headerTitle}>Date Created: </span>
-                  {new Date(entry.dateCreated).toDateString()}
+                  <span className={styles.headerTitle}>date created: </span>
+                  {new Date(entry.dateCreated).toDateString().toLowerCase()}
               </p>
             </div>
-            <div className={styles.colorBox} style={{backgroundColor: entry.color}}></div>
+            { entry.color && <div className={styles.colorBox} style={{backgroundColor: entry.color}}></div> }
           </div>
           <div className={styles.entryTextBox}>
             <p className={styles.entryText}>{entry.journalEntry}</p>
