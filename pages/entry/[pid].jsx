@@ -43,7 +43,7 @@ const Entry = () => {
   };
 
   const editEntry = () => {
-
+    router.push(`/edit/${pid}`);
   };
 
   return (
@@ -73,7 +73,9 @@ const Entry = () => {
               </p>
             </div>
             <div className={styles.colorAndButtons}>
-            <button className={styles.editButton}>
+            <button className={styles.editButton}
+                onClick={editEntry}
+            >
               <Image className={styles.images}
                   src='/edit.png' 
                   alt="delete button" 
