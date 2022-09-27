@@ -97,3 +97,17 @@
   align-items: center;
   justify-content: center;
 }
+
+.textArea::-webkit-scrollbar {
+  width: 0.8rem;
+}
+.textArea::-webkit-scrollbar-track {
+  background: transparent;
+}
+.textArea::-webkit-scrollbar-thumb {
+  background-color: #d46b55;
+  border-radius: 20px;
+}
+.textArea::-webkit-scrollbar-corner {
+  background: transparent;
+}
