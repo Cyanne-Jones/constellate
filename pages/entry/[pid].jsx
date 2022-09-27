@@ -34,6 +34,18 @@ const Entry = () => {
 
   }, []);
 
+  const deleteEntry = async () => {
+
+    const postDoc = doc(db, 'entries', pid);
+    await deleteDoc(postDoc);
+    router.push('/calendar');
+
+  };
+
+  const editEntry = () => {
+
+  };
+
   return (
     <div className={styles.entryPage}>
       <Head>
@@ -69,7 +81,9 @@ const Entry = () => {
                   width="40"
                 />
               </button>
-              <button className={styles.deleteButton}>
+              <button className={styles.deleteButton}
+                onClick={deleteEntry}
+              >
               <Image className={styles.images}
                   src='/delete-document.png' 
                   alt="delete button" 
