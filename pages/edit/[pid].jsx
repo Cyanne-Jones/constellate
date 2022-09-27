@@ -102,12 +102,14 @@ export default function Edit() {
             </div>
           </header>
           <div className={styles.userInputsContainer}>
-            <textarea type="textarea"
-              className={styles.textArea}
-              placeholder="your thoughts"
-              value={journalEntry}
-              onChange={(event) => setJournalEntry(event.target.value)}
-            />
+            <div className={styles.textContainer}>
+              <textarea type="textarea"
+                className={styles.textArea}
+                placeholder="your thoughts"
+                value={journalEntry}
+                onChange={(event) => setJournalEntry(event.target.value)}
+              />
+            </div>
             <div className={styles.additionalInputsContainer}>
               <input 
                 type="text"

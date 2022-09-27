@@ -55,12 +55,21 @@
   height: 60%;
 }
 
-.textArea {
+.textContainer {
   height: 60%;
   width: 50%;
 }
 
-.textArea,
+.textArea {
+  background-color: #debc72;
+  color: #293d48;
+  font-family: 'Antonio', sans-serif;
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+
+.textContainer,
 .additionalInput {
   background-color: #debc72;
   border: solid #293d48 3px;
