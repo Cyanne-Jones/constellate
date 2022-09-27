@@ -6,6 +6,7 @@ import { db, auth } from '/firebase-config';
 import { getDocs, collection, deleteDoc, doc } from 'firebase/firestore';
 import useIsAuthStore from '/state/useIsAuthStore';
 import styles from '/styles/[pid].module.css';
+import Image from 'next/image';
 
 const Entry = () => {
 
@@ -59,7 +60,25 @@ const Entry = () => {
                   {new Date(entry.dateCreated).toDateString().toLowerCase()}
               </p>
             </div>
-            { entry.color && <div className={styles.colorBox} style={{backgroundColor: entry.color}}></div> }
+            <div className={styles.colorAndButtons}>
+            <button className={styles.editButton}>
+              <Image className={styles.images}
+                  src='/edit.png' 
+                  alt="delete button" 
+                  height="40" 
+                  width="40"
+                />
+              </button>
+              <button className={styles.deleteButton}>
+              <Image className={styles.images}
+                  src='/delete-document.png' 
+                  alt="delete button" 
+                  height="40" 
+                  width="40"
+                />
+              </button>
+              { entry.color && <div className={styles.colorBox} style={{backgroundColor: entry.color}}></div> }
+            </div>
           </div>
           <div className={styles.entryTextBox}>
             <p className={styles.entryText}>{entry.journalEntry}</p>

@@ -31,6 +31,7 @@
   width: 4rem;
   border-radius: 2rem;
   box-shadow: rgba(2, 2, 2, 0.2) 3px 3px 0px 1px;
+  margin: 0.3rem;
 }
 
 .entryTextBox {
@@ -74,4 +75,30 @@
 .title {
   font-size: 1.6rem;
   margin: 0.5rem;
+}
+
+.colorAndButtons {
+  display: flex;
+}
+
+.editButton,
+.deleteButton {
+  background: none;
+  border: none;
+  margin: 0.3rem;
+  padding: 0.3rem;
+  border-radius: 1rem;
+}
+
+.editButton:hover,
+.deleteButton:hover {
+  cursor: pointer;
+}
+
+.editButton:hover {
+  background-color: #debc72;
+}
+
+.deleteButton:hover {
+  background-color: #d46b55;
 }
