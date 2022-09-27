@@ -68,13 +68,13 @@ export default function Create() {
   return (
     <div className={styles.create}>
       <Head>
-        <title>Create a New Entry</title>
+        <title>create a new entry</title>
       </Head>
       <Nav />
       {!isAuth ? 
       <div className={styles.errorContainer}>
         <h1 className={styles.errorMessage}>
-          Please sign in to create a new journal entry
+          please sign in to create a new journal entry
         </h1> 
       </div>:
       <div className={styles.mainContainer}>

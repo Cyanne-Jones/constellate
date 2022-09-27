@@ -81,14 +81,14 @@ export default function CalendarPage() {
 
     <>
     <Head>
-      <title>Calendar</title>
+      <title>calendar</title>
     </Head>
       <div className={styles.calendar}>
         <Nav />
         {!isAuth ? 
         <div className={styles.errorContainer}>
           <h1 className={styles.errorMessage}>
-            Please sign in to create a new journal entry
+            please sign in to create a new journal entry
           </h1> 
         </div> :
         <div className={styles.calendarContainer}>

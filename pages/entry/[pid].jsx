@@ -16,6 +16,7 @@ const Entry = () => {
   const [ entry, setEntry ] = useState({});
   const entryCollectionRef = collection(db, 'entries');
   const [ entryAuthorId, setEntryAuthorId] = useState(0);
+  const [ userName, setUserName ] = useState('');
 
   useEffect(() => {
 
@@ -29,6 +30,7 @@ const Entry = () => {
 
       setEntry(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)));
       setEntryAuthorId(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).author.id);
+      setUserName(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).author.name);
     };
     getEntry();
 
@@ -49,7 +51,7 @@ const Entry = () => {
   return (
     <div className={styles.entryPage}>
       <Head>
-        <title>Journal Entry</title>
+        <title>{userName && `${userName.split(' ')[0].toLocaleLowerCase()}'s `}journal entry</title>
       </Head>
       <Nav />
       <div className={styles.entryContainer}>
