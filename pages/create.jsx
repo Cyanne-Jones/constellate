@@ -85,7 +85,7 @@ export default function Create() {
               <button className={styles.saveButton}
                 onClick={createEntry}>
                 <Image className={styles.images}
-                  src='/floppy-disk.png' 
+                  src='/disk.png' 
                   alt="save button" 
                   height="40" 
                   width="40"
@@ -94,7 +94,7 @@ export default function Create() {
               <button className={styles.deleteButton}
               onClick={deleteInputs}>
                 <Image className={styles.images}
-                  src='/delete.png' 
+                  src='/trash.png' 
                   alt="delete button" 
                   height="40" 
                   width="40"
@@ -103,12 +103,14 @@ export default function Create() {
             </div>
           </header>
           <div className={styles.userInputsContainer}>
-            <textarea type="textarea"
-              className={styles.textArea}
-              placeholder="your thoughts"
-              value={journalEntry}
-              onChange={(event) => setJournalEntry(event.target.value)}
-            />
+            <div className={styles.textContainer}>
+              <textarea type="textarea"
+                className={styles.textArea}
+                placeholder="your thoughts"
+                value={journalEntry}
+                onChange={(event) => setJournalEntry(event.target.value)}
+              />
+            </div>
             <div className={styles.additionalInputsContainer}>
               <input 
                 type="text"

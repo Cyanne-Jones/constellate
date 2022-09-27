@@ -93,7 +93,7 @@ export default function Edit() {
               <button className={styles.saveButton}
                 onClick={saveEntry}>
                 <Image className={styles.images}
-                  src='/floppy-disk.png' 
+                  src='/disk.png' 
                   alt="save button" 
                   height="40" 
                   width="40"
