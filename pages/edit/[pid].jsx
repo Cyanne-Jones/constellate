@@ -1,52 +1,69 @@
 import Head from 'next/head';
-import Nav from '../components/Nav';
+import Nav from '/components/Nav';
 import { useEffect, useState } from 'react';
-import useIsAuthStore from '../state/useIsAuthStore';
+import useIsAuthStore from '/state/useIsAuthStore';
 import { useRouter } from 'next/router';
-import styles from '../styles/Create.module.css';
+import styles from '/styles/Edit.module.css';
 import Image from 'next/image';
 import { ChromePicker } from 'react-color';
-import { db, auth } from '../firebase-config';
-import { addDoc, collection } from 'firebase/firestore';
+import { db, auth } from '/firebase-config';
+import { setDoc, collection, getDocs, doc } from 'firebase/firestore';
 
-export default function Create() {
+export default function Edit() {
 
   const isAuth = useIsAuthStore(state => state.isAuth);
   const router = useRouter();
+  const { pid } = router.query;
   const [color, setColor] = useState('');
   const [journalEntry, setJournalEntry] = useState('');
   const [title, setTitle] = useState('');
   const [mood, setMood] = useState('');
+  const [ entry, setEntry ] = useState({});
   const entriesCollectionRef = collection(db, 'entries');
+  const [ entryAuthorId, setEntryAuthorId] = useState(0);
 
   useEffect(() => {
 
     if (!isAuth) {
       setTimeout(() => router.push('/login'), 3000);
-    }
+      return;
+    };
 
-  });
+    const getEntry = async () => {
+      const data = await getDocs(entriesCollectionRef);
 
-  const createEntry = async () => {
+      setEntry(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)));
+      setEntryAuthorId(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).author.id);
+      setColor(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).color);
+      setJournalEntry(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).journalEntry);
+      setTitle(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).title);
+      setMood(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).mood);
+
+    };
+    getEntry();
+
+  }, []);
+
+  const saveEntry = async () => {
 
     if (!journalEntry) {
       alert('Please enter journal text before submitting!');
       return;
     };
 
-    await addDoc(entriesCollectionRef, { 
+    await setDoc(doc(db, 'entries', pid), { 
       title: title, 
       journalEntry: journalEntry,
       mood: mood,
       color: color,
-      dateCreated: Date.now(),
+      dateCreated: entry.dateCreated,
       author: {
         name: auth.currentUser.displayName, 
         id: auth.currentUser.uid
       }
     });
 
-    router.push('/calendar');
+    router.push(`/entry/${pid}`);
 
   }
 
@@ -56,46 +73,28 @@ export default function Create() {
 
   };
 
-  const deleteInputs = () => {
-
-    setColor('');
-    setJournalEntry('');
-    setTitle('');
-    setMood('');
-
-  }
-
   return (
     <div className={styles.create}>
       <Head>
-        <title>create a new entry</title>
+        <title>edit your entry</title>
       </Head>
       <Nav />
-      {!isAuth ? 
+      {(!isAuth) ? 
       <div className={styles.errorContainer}>
         <h1 className={styles.errorMessage}>
-          please sign in to create a new journal entry
+          please sign in to edit your journal entry
         </h1> 
       </div>:
       <div className={styles.mainContainer}>
         <main className={styles.main}>
           <header className={styles.header}>
-            <h2 className={styles.headerText}>new entry</h2>
+            <h2 className={styles.headerText}>edit your entry</h2>
             <div className={styles.buttonBox}>
               <button className={styles.saveButton}
-                onClick={createEntry}>
+                onClick={saveEntry}>
                 <Image className={styles.images}
                   src='/disk.png' 
                   alt="save button" 
-                  height="40" 
-                  width="40"
-                />
-              </button>
-              <button className={styles.deleteButton}
-              onClick={deleteInputs}>
-                <Image className={styles.images}
-                  src='/trash.png' 
-                  alt="delete button" 
                   height="40" 
                   width="40"
                 />

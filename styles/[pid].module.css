@@ -3,18 +3,18 @@
 }
 
 .entryContainer {
-  height: 80%;
+  height: 85%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .entryBox {
   background-color: #4a9085;
-  height: 80%;
-  width: 70%;
-  padding: 1.5rem;
+  height: 85%;
+  width: 87%;
+  padding: 1rem;
   border-radius: 1.5rem;
   border: solid #debc72 4px;
 }
@@ -31,12 +31,13 @@
   width: 4rem;
   border-radius: 2rem;
   box-shadow: rgba(2, 2, 2, 0.2) 3px 3px 0px 1px;
+  margin: 0.3rem;
 }
 
 .entryTextBox {
   background-color: #debc72;
   color: #293d48;
-  height: 60%;
+  height: 50%;
   border-radius: 1rem;
   padding: 1rem;
   display: flex;
@@ -74,4 +75,33 @@
 .title {
   font-size: 1.6rem;
   margin: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 2rem;
+}
+
+.colorAndButtons {
+  display: flex;
+}
+
+.editButton,
+.deleteButton {
+  background: none;
+  border: none;
+  margin: 0.3rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.editButton:hover,
+.deleteButton:hover {
+  cursor: pointer;
+}
+
+.editButton:hover {
+  background-color: #debc72;
+}
+
+.deleteButton:hover {
+  background-color: #d46b55;
 }
