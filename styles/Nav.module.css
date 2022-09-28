@@ -36,3 +36,89 @@
   font-size: 2rem;
 }
 
+.hamburgerButton,
+.mobileTitle,
+.closedMobileTitle {
+  display: none;
+}
+
+@media screen and (max-width: 615px) {
+  .hamburgerButton {
+    display: block;
+  }
+
+  .hamburgerButton:hover {
+    cursor: pointer;
+  }
+
+  .closedHamburger {
+    transform: translateX(2.3rem);
+  }
+
+  .openHamburger {
+    transform: translateX(0.5rem);
+  }
+
+  .openMenu {
+    animation: slide 1s;
+    background-color: rgba(212, 107, 85, 0.7);
+    border-radius: 1rem;
+    width: 90vw;
+    margin: 0px;
+    align-items: flex-start;
+    font-size: 1.5rem;
+  }
+
+  .logoutButton {
+    font-size: 1.5rem;
+  }
+  
+  .hiddenMenu {
+    transform: translateY(-30rem);
+  }
+
+  .navLinkContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navBar {
+    height: auto;
+    align-items: center;
+  }
+
+  .openLinkAndButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .closedLinkAndButtonContainer {
+    height: 70px;
+  }
+
+  .hiddenTitle {
+    display: none;
+  }
+
+  .link {
+    width: 80%;
+  }
+
+  .buttonAndTitleContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mobileTitle {
+    display: block;
+    font-size: 1.95rem;
+    transform: translateY(-0.2rem);
+  }
+
+  .closedMobileTitle {
+    display: none;
+  }
+}

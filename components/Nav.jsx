@@ -2,12 +2,15 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from '../styles/Nav.module.css';
 import useIsAuthStore from '../state/useIsAuthStore';
+import useHamburgerOnStore from '../state/useHamburgerOnStore';
 import Image from 'next/image';
 
 export default function Nav() {
 
   const setIsAuthFalse = useIsAuthStore(state => state.setIsAuthFalse)
   const isAuth = useIsAuthStore(state => state.isAuth);
+  const isMenuOpen = useHamburgerOnStore(state => state.isMenuOpen);
+  const setIsMenuOpen = useHamburgerOnStore(state => state.setIsMenuOpen);
   const router = useRouter();
 
   const logUserOut = () => {
@@ -15,6 +18,13 @@ export default function Nav() {
     localStorage.setItem("isAuth", false);
     setIsAuthFalse();
     router.push('/login');
+
+  };
+
+  const handleHamburgerClick = () => {
+
+    isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
+    console.log(isMenuOpen);
 
   };
 
@@ -57,30 +67,41 @@ export default function Nav() {
     <nav className={styles.navBar}>
       <a 
         href="/"
-        className={styles.title}
+        className={`${styles.title} ${isMenuOpen && styles.hiddenTitle}`}
       >
         the write stuff
       </a>
-      <div className={styles.navLinkContainer}>
-        <Link href="/" passHref>
-          <a 
-          className={router.pathname === '/' ? 
-          (`${styles.link} ${styles.activeLink}`) : 
-          (`${styles.link}`)}
-          >
-            home
-          </a> 
-        </Link>
-        {NavLinks}
+      <div className={`${styles.linkAndButtonContainer} ${isMenuOpen ? styles.openLinkAndButtonContainer : styles.closedLinkAndButtonContainer}`}>
+        <div className={styles.buttonAndTitleContainer}>
+          <a href="/"
+            className={`${isMenuOpen ? styles.mobileTitle : styles.closedMobileTitle}`}>
+              menu
+            </a>
+          <button className={`${styles.hamburgerButton} ${isMenuOpen ? styles.openHamburger : styles.closedHamburger}`}
+              onClick={handleHamburgerClick}
+            >
+              <Image className={styles.hamburgerImage}
+                src={!isMenuOpen ? "/hamburger.png" : "/close-menu.png"}
+                alt="menu button"
+                height="40"
+                width="40"
+              />
+            </button>
+        </div>
+        <div className={`${styles.navLinkContainer} ${isMenuOpen ? styles.openMenu : styles.hiddenMenu}`}>
+          <Link href="/" passHref>
+            <a 
+            className={router.pathname === '/' ? 
+            (`${styles.link} ${styles.activeLink}`) : 
+            (`${styles.link}`)}
+            >
+              home
+            </a> 
+          </Link>
+          {NavLinks}
+        </div>
+        
       </div>
-      <button className={`${styles.hamburgerButton}`}>
-        <Image className={styles.hamburgerImage}
-          src="/hamburger.png"
-          alt="menu button"
-          height="40"
-          width="40"
-        />
-      </button>
     </nav>
   )
 
