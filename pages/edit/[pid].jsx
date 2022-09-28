@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { ChromePicker } from 'react-color';
 import { db, auth } from '/firebase-config';
 import { setDoc, collection, getDocs, doc } from 'firebase/firestore';
-import useHamburgerOnStore from '../state/useHamburgerOnStore';
+import useHamburgerOnStore from '/state/useHamburgerOnStore';
 
 export default function Edit() {
 

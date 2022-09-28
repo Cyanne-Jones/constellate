@@ -7,7 +7,7 @@ import { getDocs, collection, deleteDoc, doc } from 'firebase/firestore';
 import useIsAuthStore from '/state/useIsAuthStore';
 import styles from '/styles/[pid].module.css';
 import Image from 'next/image';
-import useHamburgerOnStore from '../state/useHamburgerOnStore';
+import useHamburgerOnStore from '/state/useHamburgerOnStore';
 
 const Entry = () => {
 
