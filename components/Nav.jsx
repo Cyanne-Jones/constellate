@@ -24,7 +24,6 @@ export default function Nav() {
   const handleHamburgerClick = () => {
 
     isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
-    console.log(isMenuOpen);
 
   };
 
