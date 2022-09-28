@@ -1,7 +1,7 @@
 import create from 'zustand';
 
 const useHamburgerOnStore = create((set) => ({
-  isMenuOpen: true,
+  isMenuOpen: false,
   setIsMenuOpen: (bool) => set({ isMenuOpen: bool })
 }));
 
