@@ -17,6 +17,7 @@ export default function Nav() {
 
     localStorage.setItem("isAuth", false);
     setIsAuthFalse();
+    setIsMenuOpen(false);
     router.push('/login');
 
   };

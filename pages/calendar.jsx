@@ -1,13 +1,13 @@
 import Head from 'next/head';
-//import 'react-calendar/dist/Calendar.css';
 import { useState, useEffect } from 'react';
 import Nav from '../components/Nav';
 import styles from '../styles/Calendar.module.css';
 import Calendar from 'react-calendar';
 import { db, auth } from '../firebase-config';
-import { getDocs, collection, deleteDoc, doc } from 'firebase/firestore';
+import { getDocs, collection } from 'firebase/firestore';
 import useIsAuthStore from '../state/useIsAuthStore';
 import { useRouter } from 'next/router';
+import useHamburgerOnStore from '../state/useHamburgerOnStore';
 
 export default function CalendarPage() {
 
@@ -16,8 +16,11 @@ export default function CalendarPage() {
   const entryCollectionRef = collection(db, 'entries');
   const isAuth = useIsAuthStore(state => state.isAuth);
   const router = useRouter();
+  const setIsMenuOpen = useHamburgerOnStore(state => state.setIsMenuOpen);
 
   useEffect(() => {
+
+    setIsMenuOpen(false);
 
     const getEntries = async () => {
 

@@ -5,10 +5,19 @@ import { signInWithPopup } from 'firebase/auth';
 import useIsAuthStore from '../state/useIsAuthStore';
 import { useRouter } from 'next/router';
 import styles from '../styles/Login.module.css';
+import useHamburgerOnStore from '../state/useHamburgerOnStore';
+import { useEffect } from 'react';
 
 export default function Login() {
   const setIsAuthTrue = useIsAuthStore((state) => state.setIsAuthTrue);
   const router = useRouter();
+  const setIsMenuOpen = useHamburgerOnStore(state => state.setIsMenuOpen);
+
+  useEffect(() => {
+
+    setIsMenuOpen(false);
+
+  }, []);
 
   const signInWithGoogle = (event) => {
 
