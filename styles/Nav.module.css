@@ -16,7 +16,8 @@
   padding: 1rem;
 }
 
-.logoutButton {
+.logoutButton,
+.hamburgerButton {
   background: transparent;
   border: none;
   padding: 1rem;
@@ -34,3 +35,4 @@
 .title {
   font-size: 2rem;
 }
+

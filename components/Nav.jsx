@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from '../styles/Nav.module.css';
 import useIsAuthStore from '../state/useIsAuthStore';
+import Image from 'next/image';
 
 export default function Nav() {
 
@@ -72,6 +73,14 @@ export default function Nav() {
         </Link>
         {NavLinks}
       </div>
+      <button className={`${styles.hamburgerButton}`}>
+        <Image className={styles.hamburgerImage}
+          src="/hamburger.png"
+          alt="menu button"
+          height="40"
+          width="40"
+        />
+      </button>
     </nav>
   )
 
