@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { ChromePicker } from 'react-color';
 import { db, auth } from '/firebase-config';
 import { setDoc, collection, getDocs, doc } from 'firebase/firestore';
+import useHamburgerOnStore from '/state/useHamburgerOnStore';
 
 export default function Edit() {
 
@@ -21,8 +22,11 @@ export default function Edit() {
   const [ entry, setEntry ] = useState({});
   const entriesCollectionRef = collection(db, 'entries');
   const [ entryAuthorId, setEntryAuthorId] = useState(0);
+  const setIsMenuOpen = useHamburgerOnStore(state => state.setIsMenuOpen);
 
   useEffect(() => {
+
+    setIsMenuOpen(false);
 
     if (!isAuth) {
       setTimeout(() => router.push('/login'), 3000);

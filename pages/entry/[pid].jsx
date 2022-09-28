@@ -7,6 +7,7 @@ import { getDocs, collection, deleteDoc, doc } from 'firebase/firestore';
 import useIsAuthStore from '/state/useIsAuthStore';
 import styles from '/styles/[pid].module.css';
 import Image from 'next/image';
+import useHamburgerOnStore from '/state/useHamburgerOnStore';
 
 const Entry = () => {
 
@@ -17,8 +18,11 @@ const Entry = () => {
   const entryCollectionRef = collection(db, 'entries');
   const [ entryAuthorId, setEntryAuthorId] = useState(0);
   const [ userName, setUserName ] = useState('');
+  const setIsMenuOpen = useHamburgerOnStore(state => state.setIsMenuOpen);
 
   useEffect(() => {
+
+    setIsMenuOpen(false);
 
     if (!isAuth) {
       setTimeout(() => router.push('/login'), 3000);
