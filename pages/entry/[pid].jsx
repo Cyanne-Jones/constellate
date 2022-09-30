@@ -19,12 +19,14 @@ const Entry = () => {
   const [ entryAuthorId, setEntryAuthorId] = useState(0);
   const [ userName, setUserName ] = useState('');
   const setIsMenuOpen = useHamburgerOnStore(state => state.setIsMenuOpen);
+  const [errorText, setErrorText ] = useState('');
 
   useEffect(() => {
 
     setIsMenuOpen(false);
 
     if (!localStorage.getItem("isAuth")) {
+      setErrorText('please sign in to the correct account to edit this entry');
       setTimeout(() => router.push('/login'), 3000);
       return;
     };
@@ -33,6 +35,11 @@ const Entry = () => {
       const data = await getDocs(entryCollectionRef);
 
       setEntry(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)));
+      if(!data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid))) {
+        setErrorText('please sign in to access this entry');
+        setTimeout(() => router.push('/login'), 3000);
+        return;
+      }
       setEntryAuthorId(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).author.id);
       setUserName(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).author.name);
     };
@@ -60,7 +67,7 @@ const Entry = () => {
       </Head>
       <Nav />
       <div className={styles.entryContainer}>
-        {(!isAuth || auth.currentUser.uid !== entryAuthorId) ? <p className={styles.errorMessage}>please sign in to access this entry</p> :
+        {(!isAuth || auth.currentUser.uid !== entryAuthorId) ? <h1 className={styles.errorMessage}>{errorText}</h1> :
           <div className={styles.entryBox}>
             <div className={styles.header}>
               <div className={styles.headerTextBox}>
@@ -105,8 +112,8 @@ const Entry = () => {
             </div>
             <div className={styles.entryTextBox}>
               <div className={styles.entryText}>
-                { entry.journalEntry && entry.journalEntry.split(`\n`).map(line => (
-                    <p className={styles.entryTextLine}>{line}</p>))
+                { entry.journalEntry && entry.journalEntry.split(`\n`).map((line, index) => (
+                    <p key={index}className={styles.entryTextLine}>{line}</p>))
                 }
               </div>
             </div>

@@ -91,12 +91,8 @@
 }
 
 .errorMessage {
+  width: 100%;
   text-align: center;
-  text-justify: center;
-  background-color: #4a9085;
-  border-radius: 1rem;
-  width: 60%;
-  padding: 5rem;
 }
 
 .errorContainer {

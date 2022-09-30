@@ -23,12 +23,14 @@ export default function Edit() {
   const entriesCollectionRef = collection(db, 'entries');
   const [ entryAuthorId, setEntryAuthorId] = useState(0);
   const setIsMenuOpen = useHamburgerOnStore(state => state.setIsMenuOpen);
+  const [ errorText, setErrorText ] = useState('');
 
   useEffect(() => {
 
     setIsMenuOpen(false);
 
     if (!localStorage.getItem('isAuth')) {
+      setErrorText('please sign in to the correct account to edit this entry');
       setTimeout(() => router.push('/login'), 3000);
       return;
     };
@@ -38,6 +40,8 @@ export default function Edit() {
 
       setEntry(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)));
       if (!data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid))) {
+        setErrorText('please sign in to the correct account to edit this entry');
+        setTimeout(() => router.push('/login'), 3000);
         return;
       };
       setEntryAuthorId(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).author.id);
@@ -87,11 +91,9 @@ export default function Edit() {
       </Head>
       <Nav />
       {(!isAuth || !auth.currentUser || auth.currentUser.uid !== entryAuthorId) ? 
-      <div className={styles.errorContainer}>
         <h1 className={styles.errorMessage}>
-          please sign in to the correct account edit this journal entry
-        </h1> 
-      </div>:
+          {errorText}
+        </h1> :
       <div className={styles.mainContainer}>
         <main className={styles.main}>
           <header className={styles.header}>
