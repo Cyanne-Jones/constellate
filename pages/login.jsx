@@ -33,7 +33,7 @@ export default function Login() {
   return (
     <div className={styles.login}>
       <Head>
-        <title>User Login</title>
+        <title>Login</title>
       </Head>
       <Nav />
       <div className={styles.loginContainer}>

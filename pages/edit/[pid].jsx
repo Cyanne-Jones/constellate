@@ -87,7 +87,7 @@ export default function Edit() {
   return (
     <div className={styles.create}>
       <Head>
-        <title>edit your entry</title>
+        <title>Edit Your Entry</title>
       </Head>
       <Nav />
       {(!isAuth || !auth.currentUser || auth.currentUser.uid !== entryAuthorId) ? 

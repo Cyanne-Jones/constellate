@@ -84,7 +84,7 @@ export default function CalendarPage() {
 
     <>
     <Head>
-      <title>calendar</title>
+      <title>Calendar</title>
     </Head>
       <div className={styles.calendar}>
         <Nav />

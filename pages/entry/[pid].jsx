@@ -63,7 +63,7 @@ const Entry = () => {
   return (
     <div className={styles.entryPage}>
       <Head>
-        <title>{userName && `${userName.split(' ')[0]}'s `}journal entry</title>
+        <title>{userName && `${userName.split(' ')[0]}'s `}Journal Entry</title>
       </Head>
       <Nav />
       <div className={styles.entryContainer}>
