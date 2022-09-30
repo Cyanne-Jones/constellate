@@ -16,6 +16,8 @@ export default function Nav() {
   const logUserOut = () => {
 
     localStorage.setItem("isAuth", false);
+    localStorage.setItem("userName", '');
+    localStorage.setItem("userId", '');
     setIsAuthFalse();
     setIsMenuOpen(false);
     router.push('/login');
