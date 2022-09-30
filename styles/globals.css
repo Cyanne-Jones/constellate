@@ -108,6 +108,10 @@ a {
   line-height: 16px;
 }
 
+.react-calendar__tile:hover {
+  background-color: rgba(74, 144, 133, 0.5);
+}
+
 .react-calendar__tile--now {
   background: rgba(212, 107, 85, 0.5);
 }
