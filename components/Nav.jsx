@@ -111,9 +111,8 @@ export default function Nav() {
           </Link>
           {NavLinks}
         </div>
-        
       </div>
     </nav>
   )
-
+  
 };
