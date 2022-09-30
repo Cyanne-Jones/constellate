@@ -28,7 +28,7 @@ export default function Edit() {
 
     setIsMenuOpen(false);
 
-    if (!isAuth) {
+    if (!localStorage.getItem('isAuth')) {
       setTimeout(() => router.push('/login'), 3000);
       return;
     };
@@ -37,6 +37,9 @@ export default function Edit() {
       const data = await getDocs(entriesCollectionRef);
 
       setEntry(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)));
+      if (!data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid))) {
+        return;
+      };
       setEntryAuthorId(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).author.id);
       setColor(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).color);
       setJournalEntry(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).journalEntry);
@@ -83,10 +86,10 @@ export default function Edit() {
         <title>edit your entry</title>
       </Head>
       <Nav />
-      {(!isAuth) ? 
+      {(!isAuth || !auth.currentUser || auth.currentUser.uid !== entryAuthorId) ? 
       <div className={styles.errorContainer}>
         <h1 className={styles.errorMessage}>
-          please sign in to edit your journal entry
+          please sign in to the correct account edit this journal entry
         </h1> 
       </div>:
       <div className={styles.mainContainer}>
