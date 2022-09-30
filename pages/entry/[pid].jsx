@@ -24,7 +24,7 @@ const Entry = () => {
 
     setIsMenuOpen(false);
 
-    if (!isAuth) {
+    if (!localStorage.getItem("isAuth")) {
       setTimeout(() => router.push('/login'), 3000);
       return;
     };
@@ -60,7 +60,7 @@ const Entry = () => {
       </Head>
       <Nav />
       <div className={styles.entryContainer}>
-        {(!isAuth || auth.currentUser.uid !== entryAuthorId) && <p className={styles.errorMessage}>please sign in to access this entry</p>}
+        {(!localStorage.getItem("isAuth") || localStorage.getItem("userId") !== entryAuthorId) && <p className={styles.errorMessage}>please sign in to access this entry</p>}
         <div className={styles.entryBox}>
           <div className={styles.header}>
             <div className={styles.headerTextBox}>
