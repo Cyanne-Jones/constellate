@@ -25,7 +25,7 @@ export default function Create() {
 
     setIsMenuOpen(false);
 
-    if (!isAuth) {
+    if (!localStorage.getItem("isAuth")) {
       setTimeout(() => router.push('/login'), 3000);
     }
 
@@ -72,7 +72,7 @@ export default function Create() {
   return (
     <div className={styles.create}>
       <Head>
-        <title>create a new entry</title>
+        <title>Write a new entry</title>
       </Head>
       <Nav />
       {!isAuth ? 

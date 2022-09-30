@@ -4,18 +4,29 @@ import styles from '../styles/Nav.module.css';
 import useIsAuthStore from '../state/useIsAuthStore';
 import useHamburgerOnStore from '../state/useHamburgerOnStore';
 import Image from 'next/image';
+import { useEffect } from 'react';
 
 export default function Nav() {
 
-  const setIsAuthFalse = useIsAuthStore(state => state.setIsAuthFalse)
+  const setIsAuthFalse = useIsAuthStore(state => state.setIsAuthFalse);
+  const setIsAuthTrue = useIsAuthStore(state => state.setIsAuthTrue);
+
   const isAuth = useIsAuthStore(state => state.isAuth);
   const isMenuOpen = useHamburgerOnStore(state => state.isMenuOpen);
   const setIsMenuOpen = useHamburgerOnStore(state => state.setIsMenuOpen);
   const router = useRouter();
 
+  useEffect(() => {
+    if (localStorage.getItem("isAuth") === true) {
+      setIsAuthTrue();
+    };
+  });
+
   const logUserOut = () => {
 
     localStorage.setItem("isAuth", false);
+    localStorage.setItem("userName", '');
+    localStorage.setItem("userId", '');
     setIsAuthFalse();
     setIsMenuOpen(false);
     router.push('/login');
@@ -100,9 +111,8 @@ export default function Nav() {
           </Link>
           {NavLinks}
         </div>
-        
       </div>
     </nav>
   )
-
+  
 };

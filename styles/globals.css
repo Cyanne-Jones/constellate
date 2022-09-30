@@ -108,6 +108,10 @@ a {
   line-height: 16px;
 }
 
+.react-calendar__tile:hover {
+  background-color: rgba(74, 144, 133, 0.5);
+}
+
 .react-calendar__tile--now {
   background: rgba(212, 107, 85, 0.5);
 }
@@ -148,6 +152,16 @@ a {
 
 .react-calendar__month-view__days__day abbr {
   padding: 0.3rem;
+}
+
+::placeholder {
+  color: #233E49;
+  opacity: 0.75;
+}
+
+:-ms-input-placeholder { 
+  color: #233E49;
+  opacity: 0.75;
 }
 
 @media screen and (max-width: 700px) {

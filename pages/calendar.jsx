@@ -24,14 +24,14 @@ export default function CalendarPage() {
 
     const getEntries = async () => {
 
-      if (!isAuth) {
+      if (!localStorage.getItem("isAuth")) {
         setTimeout(() => router.push('/login'), 3000);
         return;
       }
 
       const data = await getDocs(entryCollectionRef);
       setEntryList(data.docs.map(data => ({...data.data(), id: data.id}))
-      .filter(entry => entry.author.id === auth.currentUser.uid));
+      .filter(entry => entry.author.id === localStorage.getItem('userId')));
 
     };
     getEntries();
@@ -67,7 +67,7 @@ export default function CalendarPage() {
        } else {
         return (
           <div className={styles.tile}
-            onClick={() => router.push('/create')}
+            onClick={() => alert('No journal entry this day')}
           >
             <p
               className={styles.calendarEntry} 
@@ -84,14 +84,14 @@ export default function CalendarPage() {
 
     <>
     <Head>
-      <title>calendar</title>
+      <title>Calendar</title>
     </Head>
       <div className={styles.calendar}>
         <Nav />
         {!isAuth ? 
         <div className={styles.errorContainer}>
           <h1 className={styles.errorMessage}>
-            please sign in to create a new journal entry
+            please sign in to view your calendar
           </h1> 
         </div> :
         <div className={styles.calendarContainer}>

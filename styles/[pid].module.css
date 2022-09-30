@@ -93,11 +93,18 @@
 
 .editButton,
 .deleteButton {
-  background: none;
   border: none;
   margin: 0.3rem;
   padding: 0.5rem;
   border-radius: 1rem;
+}
+
+.editButton {
+  background-color: rgba(222, 188, 114, 0.4);
+}
+
+.deleteButton {
+  background-color: rgba(212, 107, 85, 0.5);
 }
 
 .editButton:hover,

@@ -23,12 +23,14 @@ export default function Edit() {
   const entriesCollectionRef = collection(db, 'entries');
   const [ entryAuthorId, setEntryAuthorId] = useState(0);
   const setIsMenuOpen = useHamburgerOnStore(state => state.setIsMenuOpen);
+  const [ errorText, setErrorText ] = useState('');
 
   useEffect(() => {
 
     setIsMenuOpen(false);
 
-    if (!isAuth) {
+    if (!localStorage.getItem('isAuth')) {
+      setErrorText('please sign in to the correct account to edit this entry');
       setTimeout(() => router.push('/login'), 3000);
       return;
     };
@@ -37,6 +39,11 @@ export default function Edit() {
       const data = await getDocs(entriesCollectionRef);
 
       setEntry(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)));
+      if (!data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid))) {
+        setErrorText('please sign in to the correct account to edit this entry');
+        setTimeout(() => router.push('/login'), 3000);
+        return;
+      };
       setEntryAuthorId(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).author.id);
       setColor(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).color);
       setJournalEntry(data.docs.map(data => ({...data.data(), id: data.id})).find(data => (data.id === pid)).journalEntry);
@@ -80,15 +87,13 @@ export default function Edit() {
   return (
     <div className={styles.create}>
       <Head>
-        <title>edit your entry</title>
+        <title>Edit Your Entry</title>
       </Head>
       <Nav />
-      {(!isAuth) ? 
-      <div className={styles.errorContainer}>
+      {(!isAuth || !auth.currentUser || auth.currentUser.uid !== entryAuthorId) ? 
         <h1 className={styles.errorMessage}>
-          please sign in to edit your journal entry
-        </h1> 
-      </div>:
+          {errorText}
+        </h1> :
       <div className={styles.mainContainer}>
         <main className={styles.main}>
           <header className={styles.header}>

@@ -23,15 +23,17 @@ export default function Login() {
 
     signInWithPopup(auth, provider).then((result) => {
       localStorage.setItem("isAuth", true);
+      localStorage.setItem("userId", auth.currentUser.uid);
+      localStorage.setItem("userName", auth.currentUser.displayName);
       setIsAuthTrue();
-      router.push('/create');
+      router.push('/calendar');
     });
   };
 
   return (
     <div className={styles.login}>
       <Head>
-        <title>User Login</title>
+        <title>Login</title>
       </Head>
       <Nav />
       <div className={styles.loginContainer}>
