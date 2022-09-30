@@ -67,7 +67,7 @@ export default function CalendarPage() {
        } else {
         return (
           <div className={styles.tile}
-            onClick={() => alert("No journal entry this day")}
+            onClick={() => alert('No journal entry this day')}
           >
             <p
               className={styles.calendarEntry} 
