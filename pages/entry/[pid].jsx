@@ -52,10 +52,11 @@ const Entry = () => {
     router.push(`/edit/${pid}`);
   };
 
+
   return (
     <div className={styles.entryPage}>
       <Head>
-        <title>{userName && `${userName.split(' ')[0].toLocaleLowerCase()}'s `}journal entry</title>
+        <title>{userName && `${userName.split(' ')[0]}'s `}journal entry</title>
       </Head>
       <Nav />
       <div className={styles.entryContainer}>
@@ -103,7 +104,11 @@ const Entry = () => {
             </div>
           </div>
           <div className={styles.entryTextBox}>
-            <p className={styles.entryText}>{entry.journalEntry}</p>
+            <div className={styles.entryText}>
+              { entry.journalEntry && entry.journalEntry.split(`\n`).map(line => (
+                  <p className={styles.entryTextLine}>{line}</p>))
+              }
+            </div>
           </div>
         </div>
       </div>

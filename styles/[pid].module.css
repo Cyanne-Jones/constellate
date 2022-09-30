@@ -41,6 +41,7 @@
   border-radius: 1rem;
   padding: 1rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -48,6 +49,12 @@
   height: 95%;
   overflow: scroll;
   transform: translateY(0.4rem);
+}
+
+.entryTextLine {
+  margin-bottom: 0.5rem;
+  padding: 0px;
+  margin-top: 0px;
 }
 
 .entryText::-webkit-scrollbar {
