@@ -25,7 +25,7 @@ export default function Create() {
 
     setIsMenuOpen(false);
 
-    if (!isAuth) {
+    if (!localStorage.getItem("isAuth")) {
       setTimeout(() => router.push('/login'), 3000);
     }
 
