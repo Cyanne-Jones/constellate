@@ -59,25 +59,24 @@
 
 
   .openMenu {
-    position: absoute;
+    position: relative;
     animation: slide 0.7s;
     background-color: rgba(212, 107, 85, 0.7);
     border-radius: 1rem;
     width: 93vw;
     margin: 0px;
-    align-items: flex-start;
+    align-items: center;
     font-size: 1.5rem;
   }
 
   @keyframes slide {
-
-    0% { transform: translateY(-30rem)}
-    100% { transform: translateY(0rem)}
-    
+    0% { top: -30rem}
+    100% { top:0rem}
   }
 
   .logoutButton {
     font-size: 1.5rem;
+    text-align: left;
   }
   
   .hiddenMenu {
@@ -108,8 +107,11 @@
     display: none;
   }
 
-  .link {
-    width: 80%;
+  .link,
+  .logoutButton {
+    width: 90%;
+    padding: 0.4rem;
+    margin: 0.5rem;
   }
 
   .buttonAndTitleContainer {

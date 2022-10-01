@@ -86,7 +86,7 @@ export default function Nav() {
         <div className={styles.buttonAndTitleContainer}>
           <a href="/"
             className={`${isMenuOpen ? styles.mobileTitle : styles.closedMobileTitle}`}>
-              menu
+              <em>menu</em>
             </a>
           <button className={`${styles.hamburgerButton} ${isMenuOpen ? styles.openHamburger : styles.closedHamburger}`}
               onClick={handleHamburgerClick}
