@@ -75,7 +75,7 @@ export default function Nav() {
   </Link></>
 
   return (
-    <nav className={styles.navBar}>
+    <nav className={`${styles.navBar} ${isMenuOpen ? styles.openNavBar : styles.closedNavBar}`}>
       <a 
         href="/"
         className={`${styles.title} ${isMenuOpen && styles.hiddenTitle}`}

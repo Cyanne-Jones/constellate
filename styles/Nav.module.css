@@ -45,28 +45,35 @@
 @media screen and (max-width: 615px) {
   .hamburgerButton {
     display: block;
+    margin-left: auto;
   }
 
   .hamburgerButton:hover {
     cursor: pointer;
   }
 
-  .closedHamburger {
-    transform: translateX(2.3rem);
+  .closedHamburger,
+  .openHamburger {
+    transform: translateX(1rem);
   }
 
-  .openHamburger {
-    transform: translateX(0.5rem);
-  }
 
   .openMenu {
-    animation: slide 1s;
+    position: absoute;
+    animation: slide 0.7s;
     background-color: rgba(212, 107, 85, 0.7);
     border-radius: 1rem;
-    width: 90vw;
+    width: 93vw;
     margin: 0px;
     align-items: flex-start;
     font-size: 1.5rem;
+  }
+
+  @keyframes slide {
+
+    0% { transform: translateY(-30rem)}
+    100% { transform: translateY(0rem)}
+    
   }
 
   .logoutButton {
