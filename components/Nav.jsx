@@ -34,8 +34,9 @@ export default function Nav() {
   };
 
   const handleHamburgerClick = () => {
-
+ 
     isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
+    console.log("it happened")
 
   };
 
@@ -75,7 +76,7 @@ export default function Nav() {
   </Link></>
 
   return (
-    <nav className={styles.navBar}>
+    <nav className={`${styles.navBar} ${isMenuOpen ? styles.openNavBar : styles.closedNavBar}`}>
       <a 
         href="/"
         className={`${styles.title} ${isMenuOpen && styles.hiddenTitle}`}
@@ -86,7 +87,7 @@ export default function Nav() {
         <div className={styles.buttonAndTitleContainer}>
           <a href="/"
             className={`${isMenuOpen ? styles.mobileTitle : styles.closedMobileTitle}`}>
-              menu
+              <em>menu</em>
             </a>
           <button className={`${styles.hamburgerButton} ${isMenuOpen ? styles.openHamburger : styles.closedHamburger}`}
               onClick={handleHamburgerClick}
@@ -99,17 +100,19 @@ export default function Nav() {
               />
             </button>
         </div>
-        <div className={`${styles.navLinkContainer} ${isMenuOpen ? styles.openMenu : styles.hiddenMenu}`}>
-          <Link href="/" passHref>
-            <a 
-            className={router.pathname === '/' ? 
-            (`${styles.link} ${styles.activeLink}`) : 
-            (`${styles.link}`)}
-            >
-              home
-            </a> 
-          </Link>
-          {NavLinks}
+        <div className={`${isMenuOpen && styles.openMenuContainer} ${(isAuth && isMenuOpen) && styles.loggedInMenuContainer} ${(!isAuth && isMenuOpen) && styles.loggedOutMenuContainer}` }>
+          <div className={`${styles.navLinkContainer} ${isMenuOpen ? styles.openMenu : styles.hiddenMenu} ${isAuth ? styles.loggedInMenu : styles.loggedOutMenu}`}>
+            <Link href="/" passHref>
+              <a 
+              className={router.pathname === '/' ? 
+              (`${styles.link} ${styles.activeLink}`) : 
+              (`${styles.link}`)}
+              >
+                home
+              </a> 
+            </Link>
+            {NavLinks}
+          </div>
         </div>
       </div>
     </nav>

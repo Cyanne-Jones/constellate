@@ -45,36 +45,69 @@
 @media screen and (max-width: 615px) {
   .hamburgerButton {
     display: block;
+    margin-left: auto;
   }
 
   .hamburgerButton:hover {
     cursor: pointer;
   }
 
-  .closedHamburger {
-    transform: translateX(2.3rem);
+  .closedHamburger,
+  .openHamburger {
+    transform: translateX(1rem);
   }
 
-  .openHamburger {
-    transform: translateX(0.5rem);
-  }
 
   .openMenu {
-    animation: slide 1s;
+    position: relative;
+    animation: slide 0.7s;
     background-color: rgba(212, 107, 85, 0.7);
     border-radius: 1rem;
-    width: 90vw;
+    width: 93vw;
     margin: 0px;
-    align-items: flex-start;
+    align-items: center;
     font-size: 1.5rem;
+  }
+
+  @keyframes slide {
+    0% { top: -30rem;}
+    100% { top:0rem;}
+  }
+
+  .loggedOutMenu {
+    height: 8rem;
+  }
+
+  .loggedOutMenuContainer {
+    animation: loggedOutGrow 0.7s;
+  }
+
+  @keyframes loggedOutGrow {
+    0% {height: 0rem;}
+    100% {height: 8rem;}
+  }
+
+  .loggedInMenu {
+    height: 15rem;
+  }
+
+  .loggedInMenuContainer {
+    animation: loggedInGrow 0.7s;
+  }
+
+  @keyframes loggedInGrow {
+    0% {height: 0rem;}
+    100% {height: 15rem;}
   }
 
   .logoutButton {
     font-size: 1.5rem;
+    text-align: left;
+    padding-left: 0.5rem;
   }
   
   .hiddenMenu {
-    transform: translateY(-30rem);
+    opacity: 0%;
   }
 
   .navLinkContainer {
@@ -101,8 +134,15 @@
     display: none;
   }
 
+  .link,
+  .logoutButton {
+    width: 90%;
+    padding: 0.4rem;
+    margin: 0.5rem;
+  }
+
   .link {
-    width: 80%;
+    padding-left: 1rem;
   }
 
   .buttonAndTitleContainer {

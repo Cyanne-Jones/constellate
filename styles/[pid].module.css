@@ -119,3 +119,23 @@
 .deleteButton:hover {
   background-color: #d46b55;
 }
+
+@media screen and (max-width: 600px) {
+  .entryBox {
+    width: 80%;
+    height: auto;
+  }
+
+  .entryTextBox {
+    height: auto;
+  }
+
+  .title {
+    height: auto
+  }
+
+  .colorAndButtons {
+    flex-direction: column;
+    margin-left: 1rem;
+  }
+}
