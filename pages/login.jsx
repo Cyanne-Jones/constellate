@@ -26,6 +26,7 @@ export default function Login() {
       localStorage.setItem("userId", auth.currentUser.uid);
       localStorage.setItem("userName", auth.currentUser.displayName);
       setIsAuthTrue();
+      setIsMenuOpen(false);
       router.push('/calendar');
     });
   };
