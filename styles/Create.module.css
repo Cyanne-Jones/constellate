@@ -138,3 +138,40 @@
 .textArea::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+@media screen and (max-width: 600px) {
+  .userInputsContainer {
+    flex-direction: column;;
+  }
+
+  .mainContainer {
+    height: auto;
+  }
+
+  .textContainer {
+    height: 10rem;
+  }
+
+  .additionalInputsContainer,
+  .textContainer {
+    width: 80%;
+  }
+
+  .whatColorText {
+    font-size: 1.3rem;
+    margin: 0px;
+    margin-bottom: 0.5rem;
+  }
+
+  .reactColorContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+  }
+
+  .reactColor {
+    margin-bottom: 0.5rem;
+  }
+}

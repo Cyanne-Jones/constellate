@@ -134,7 +134,7 @@ export default function Create() {
               />
             </div>
             <div className={styles.reactColorContainer}>
-              <h4>What color does today feel like?</h4>
+              <h4 className={styles.whatColorText}>What color does today feel like?</h4>
               <ChromePicker 
                 color={color}
                 onChangeComplete={handleChangeComplete}
