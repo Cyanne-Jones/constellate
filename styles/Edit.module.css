@@ -117,3 +117,50 @@
 .textArea::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+@media screen and (max-width: 700px) {
+  .userInputsContainer {
+    flex-direction: column;
+  }
+
+  .mainContainer {
+    height: auto;
+    transform: translateX(0.1rem);
+  }
+
+  .textContainer {
+    height: 10rem;
+  }
+
+  .textArea {
+    font-size: 1rem;
+    width: 97%;
+  }
+
+  .additionalInputsContainer,
+  .textContainer {
+    width: 80%;
+  }
+
+  .additionalInput {
+    font-size: 1rem;
+  }
+
+  .whatColorText {
+    font-size: 1.3rem;
+    margin: 0px;
+    margin-bottom: 0.5rem;
+  }
+
+  .reactColorContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+  }
+
+  .reactColor {
+    margin-bottom: 0.5rem;
+  }
+}
