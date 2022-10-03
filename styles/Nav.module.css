@@ -107,7 +107,7 @@
   }
   
   .hiddenMenu {
-    transform: translateY(-30rem);
+    opacity: 0%;
   }
 
   .navLinkContainer {
