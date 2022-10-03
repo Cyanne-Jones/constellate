@@ -139,13 +139,14 @@
   background: transparent;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .userInputsContainer {
-    flex-direction: column;;
+    flex-direction: column;
   }
 
   .mainContainer {
     height: auto;
+    transform: translateX(0.1rem);
   }
 
   .textContainer {
