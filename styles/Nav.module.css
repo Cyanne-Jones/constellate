@@ -103,6 +103,7 @@
   .logoutButton {
     font-size: 1.5rem;
     text-align: left;
+    padding-left: 0.5rem;
   }
   
   .hiddenMenu {
@@ -138,6 +139,10 @@
     width: 90%;
     padding: 0.4rem;
     margin: 0.5rem;
+  }
+
+  .link {
+    padding-left: 1rem;
   }
 
   .buttonAndTitleContainer {
