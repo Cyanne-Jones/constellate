@@ -153,9 +153,18 @@
     height: 10rem;
   }
 
+  .textArea {
+    font-size: 1rem;
+    width: 97%;
+  }
+
   .additionalInputsContainer,
   .textContainer {
     width: 80%;
+  }
+
+  .additionalInput {
+    font-size: 1rem;
   }
 
   .whatColorText {
