@@ -108,7 +108,7 @@ export default function Nav() {
               (`${styles.link} ${styles.activeLink}`) : 
               (`${styles.link}`)}
               >
-                home
+                about
               </a> 
             </Link>
             {NavLinks}
