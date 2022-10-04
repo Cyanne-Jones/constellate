@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css';
 import Nav from '../components/Nav';
 import useHamburgerOnStore from '../state/useHamburgerOnStore';
 import { useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
 
@@ -16,12 +17,95 @@ export default function Home() {
   
 
   return (
-    <>
+    <div className={styles.aboutPage}>
     <Head>
-      <title>The Write Stuff</title>
+      <title>Constellate</title>
     </Head>
       <Nav />
-      HOME
-    </>
+      <main className={styles.main}>
+        <div className={styles.whatIsContainer}>
+          <h1 className={styles.heading}>what is constellate?</h1>
+          <p className={styles.description}>
+            constellate is a web application to keep track of your thoughts and 
+            moods over time, like an online journal only accessible to you. if 
+            you’re tired of having too many physical journals to count, and are 
+            hoping for something a little more consistent and structured, 
+            constellate is built with you in mind.
+          </p>
+        </div>
+        <div className={styles.createContainer}>
+          <Image className={styles.desktopImage}
+            width="300"
+            height="200"
+            src="/create.png"
+          />
+          <div className={styles.textContainer}>
+            <h1 className={styles.heading}>create an entry</h1>
+            <p className={styles.description}>
+              every day you’re able to create a new journal entry with your thoughts, 
+              a title, a mood and a color that today feels like. when you click the 
+              save button, you can view the entry on your calendar.
+            </p>
+          </div>
+        </div>
+        <div className={styles.calendarContainer}>
+          <div className={styles.textContainer}>
+            <h1 className={styles.heading}>navigate your calendar</h1>
+            <p className={styles.description}>
+            from the calendar, you’re able to reflect on your past entries at a bird’s 
+            eye view. you can click into your entry to view and edit it. 
+            </p>
+          </div>
+          <Image className={styles.desktopImage}
+            height="200"
+            width="300"
+            src="/calendar.png"
+          />
+        </div>
+        <div className={styles.mobileContainer}>
+          <div className={styles.mobileImagesContainer}>
+          <Image className={styles.mobileImage}
+            height="250"
+            width="150"
+            src="/mobile-calendar.jpg"
+          />
+          <Image className={styles.mobileImage}
+            height="250"
+            width="150"
+            src="/mobile-create.jpg"
+          />
+          <Image className={styles.mobileImage}
+            height="250"
+            width="150"
+            src="/mobile-entry.jpg"
+          />
+          </div>
+          <div className={styles.textContainer}>
+            <h1 className={styles.heading}>mobile responsive</h1>
+            <p className={styles.description}>
+            constellate is meant to keep your thoughts wherever you’re at, which 
+            means on the go as well as when you’re at your computer, so feel free 
+            to bring constellate with you wherever you are.
+            </p>
+          </div>
+        </div>
+        <footer className={styles.footer}>
+          made with love in 2022 by
+          <a 
+            className={styles.footerLink} 
+            href="https://cyannejones.vercel.app/"
+          >
+            cyanne jones
+          </a>
+          , you can find my github 
+          <a
+            className={styles.footerLink}
+            href="https://github.com/Cyanne-Jones"
+          >
+            here
+          </a>
+        </footer>
+      </main>
+    </div>
   )
 };
