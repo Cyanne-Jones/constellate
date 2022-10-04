@@ -81,7 +81,7 @@ export default function Nav() {
         href="/"
         className={`${styles.title} ${isMenuOpen && styles.hiddenTitle}`}
       >
-        the write stuff
+        constellate
       </a>
       <div className={`${styles.linkAndButtonContainer} ${isMenuOpen ? styles.openLinkAndButtonContainer : styles.closedLinkAndButtonContainer}`}>
         <div className={styles.buttonAndTitleContainer}>
