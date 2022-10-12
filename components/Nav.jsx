@@ -77,18 +77,14 @@ export default function Nav() {
 
   return (
     <nav className={`${styles.navBar} ${isMenuOpen ? styles.openNavBar : styles.closedNavBar}`}>
-      <a 
-        href="/"
-        className={`${styles.title} ${isMenuOpen && styles.hiddenTitle}`}
-      >
-        constellate
-      </a>
+      <Link href="/">
+        <p className={`${styles.title} ${isMenuOpen && styles.hiddenTitle}`}>constellate</p>
+      </Link>
       <div className={`${styles.linkAndButtonContainer} ${isMenuOpen ? styles.openLinkAndButtonContainer : styles.closedLinkAndButtonContainer}`}>
         <div className={styles.buttonAndTitleContainer}>
-          <a href="/"
-            className={`${isMenuOpen ? styles.mobileTitle : styles.closedMobileTitle}`}>
-              <em>menu</em>
-            </a>
+          <Link href="/">
+              <p className={`${isMenuOpen ? styles.mobileTitle : styles.closedMobileTitle}`}><em>menu</em></p>
+          </Link>
           <button className={`${styles.hamburgerButton} ${isMenuOpen ? styles.openHamburger : styles.closedHamburger}`}
               onClick={handleHamburgerClick}
             >
