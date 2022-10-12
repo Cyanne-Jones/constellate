@@ -60,3 +60,23 @@
   margin-left: 0.3rem;
 }
 
+@media screen and (max-width: 600px) {
+  .createContainer,
+  .mobileContainer {
+    flex-direction: column-reverse;
+  }
+
+  .calendarContainer {
+    flex-direction: column;
+  }
+
+  .textContainer {
+    width: 100%;
+  }
+
+  .mobileImagesContainer {
+    flex-direction: column;
+  }
+
+}
+
