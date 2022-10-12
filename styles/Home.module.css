@@ -26,7 +26,6 @@
 .calendarContainer,
 .mobileContainer {
   display: flex;
-
   align-items:center;
   justify-content: space-between;
   border-top: dashed 3px;
@@ -36,6 +35,7 @@
 
 .textContainer {
   width: 50%;
+  margin: 1rem;
 }
 
 .mobileImagesContainer {
