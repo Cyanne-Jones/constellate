@@ -120,6 +120,23 @@
   background-color: #d46b55;
 }
 
+.errorMessage {
+  text-align: center;
+  text-justify: center;
+  background-color: #4a9085;
+  border-radius: 1rem;
+  width: 60%;
+  padding: 5rem;
+}
+
+.errorContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media screen and (max-width: 600px) {
   .entryBox {
     width: 80%;
