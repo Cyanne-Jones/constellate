@@ -91,9 +91,11 @@ export default function Edit() {
       </Head>
       <Nav />
       {(!isAuth || !auth.currentUser || auth.currentUser.uid !== entryAuthorId) ? 
-        <h1 className={styles.errorMessage}>
-          {errorText}
-        </h1> :
+        <div className={styles.errorContainer}>
+          <h1 className={styles.errorMessage}>
+            {errorText}
+          </h1>
+        </div> :
       <div className={styles.mainContainer}>
         <main className={styles.main}>
           <header className={styles.header}>
