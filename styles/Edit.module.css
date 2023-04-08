@@ -57,7 +57,7 @@
 }
 
 .textContainer {
-  height: 60%;
+  height: 100%;
   width: 50%;
 }
 
@@ -65,6 +65,7 @@
   background-color: #debc72;
   color: #293d48;
   font-family: 'Antonio', sans-serif;
+  font-size: 16px;
   height: 100%;
   width: 100%;
   border: none;
