@@ -105,7 +105,7 @@ export default function Home() {
           made with love in 2022 by
           <a 
             className={styles.footerLink} 
-            href="https://cyannejones.vercel.app/"
+            href="https://cyanne.codes/"
           >
             cyanne jones
           </a>
